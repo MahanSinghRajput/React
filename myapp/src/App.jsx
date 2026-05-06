@@ -7,6 +7,11 @@ function App() {
 
   const addValue = () => {
     setCounter(counter + 1) //1st method
+
+    //if you want to handle such a case where you need to update calue multiple times in a single function then repeating setCounter doesnot work, setCounter works in batches hence the update will be reflected together and only ones, instead use
+    // setCounter((prevCounter) => {prevCounter + 1})
+    // setCounter((prevCounter) => {prevCounter + 1}) //prevCounter is variable name only
+    // setCounter(prevCounter => prevCounter + 1) //basic JS
   }
 
   const removeValue = () => {
