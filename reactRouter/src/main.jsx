@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { Route,createBrowserRouter, RouterProvider, createRoutesFromElements } from "react-router-dom";
+import { Route,createBrowserRouter, RouterProvider, createRoutesFromElements, useLoaderData } from "react-router-dom";
 import './index.css'
 import Layout from "./Layout";
 import Home from "./components/home/Home";
 import About from "./components/about/About";
-import Github from "./components/github/Github";
+import Github, { githubInfoLoader } from "./components/github/Github";
 import Contact from "./components/contact/Contact";
 import User from "./components/user/User";
 //Method 1
@@ -30,9 +30,10 @@ const router = createBrowserRouter(
                 <Route path = "" element = <Home/> />
                 <Route path = "about" element = <About/> />
                 <Route path = "contact" element = <Contact/> />
-                <Route path = "github" element = <Github/> />
+                {/* <Route path = "github" element = <Github/> /> */}
                 <Route path = "user/:id" element = <User/> />
                 {/* this is used to capture elements from url */}
+                <Route loader = {githubInfoLoader} path = 'github' element = {<Github/>} />
             </Route>
         )
     )
